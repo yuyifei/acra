@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.acra.ACRAConstants;
 import org.acra.log.NonAndroidLog;
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +36,7 @@ public class HttpRequestTest {
     @Test
     public void testSocketTimeOutCausesRequestToBeRetriedSeveralTimes_Issue63() throws Exception {
 
-        final URL url = new URL("https://spreadsheets.google.com/formResponse?formkey=" + FORM_KEY + "&amp;ifq");
+        final URL url = new URL(String.format(ACRAConstants.DEFAULT_GOOGLE_FORM_URL_FORMAT, FORM_KEY));
         final Map<String, String> params = new HashMap<String, String>();
 
         // Values observed in the GoogleDocs original html form. I presume they are required to ensure the GoogleDoc form is posted to the spreadsheet.
